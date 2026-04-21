@@ -1,5 +1,16 @@
 import Footer from '/src/components/footer/footer.jsx';
 import React, { useState } from "react";
+<<<<<<< main
+import { Link, useNavigate } from "react-router-dom"; // Importez useNavigate
+import { Button } from "@/components/ui/button";
+import { useAuth } from '../contexte/AuthContext'; // Importez useAuth
+
+const Home = () => {
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const { login } = useAuth(); // Utilisez le hook useAuth pour obtenir la fonction login
+    const navigate = useNavigate(); // Initialisez useNavigate
+=======
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { toast } from 'sonner';
@@ -11,9 +22,20 @@ const Home = () => {
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
+>>>>>>> main
 
     const handleLogin = async (e) => {
         e.preventDefault();
+<<<<<<< main
+        // Ici, vous feriez normalement un appel API pour authentifier l'utilisateur
+        // Pour cet exemple, nous simulons une connexion réussie
+        if (email === "test@example.com" && password === "password") {
+            const userData = { email: email, name: "Utilisateur Test" };
+            login(userData); // Appelle la fonction login du contexte
+            navigate("/dashboard"); // Redirige vers le tableau de bord
+        } else {
+            alert("Identifiants incorrects. Utilisez test@example.com / password");
+=======
         
         // Simple validation locale
         if (!email || !password) {
@@ -42,6 +64,7 @@ const Home = () => {
             console.error("Échec de la connexion:", error);
         } finally {
             setIsLoading(false);
+>>>>>>> main
         }
     };
 
