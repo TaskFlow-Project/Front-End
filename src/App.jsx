@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter,Routes, Route } from 'react-router-dom';
 
 // Importation de toutes les pages
 import Home from './pages/home.jsx';
@@ -17,10 +17,10 @@ function App() {
                 {/* Page d'accueil avec le formulaire de connexion */}
                 <Route path="/" element={<Home />} />
 
-        {/* Pages principales de l'application */}
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/kanban" element={<Kanban />} />
-        <Route path="/account" element={<Account />} />
+                {/* Pages principales de l'application */}
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="/kanban" element={<Kanban />} />
+                <Route path="/account" element={<Account />} />
 
                 {/* Pages d'information et légales (liens du footer) */}
                 <Route path="/cgu" element={<Cgu />} />
