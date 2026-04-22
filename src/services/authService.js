@@ -19,10 +19,9 @@ export const login = async (email, password) => {
             headers: {
                 'Content-Type': 'application/json',
             },
-            // Important: Inclure les credentials pour que les cookies HTTP-Only soient enregistrés par le navigateur
+            // Credentials 'include' = pour que les cookies HTTP-Only soient enregistrés par le navigateur
             credentials: 'include', 
             // On mappe les variables du front vers les noms de champs attendus par le back
-            // CORRECTION: 'email' est en minuscules, 'Mot_de_passe' a une majuscule
             body: JSON.stringify({ 
                 email: email, 
                 Mot_de_passe: password 
@@ -41,7 +40,6 @@ export const login = async (email, password) => {
                      errorMessage = errorData.error;
                 }
             } catch (e) {
-                // Le corps de la réponse n'est pas du JSON, on garde le message d'erreur générique
             }
             throw new Error(errorMessage);
         }
