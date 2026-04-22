@@ -1,5 +1,5 @@
 import Footer from '/src/components/footer/footer.jsx';
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useAuth } from '../contexte/AuthContext';
@@ -11,8 +11,15 @@ const Home = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isLoading, setIsLoading] = useState(false);
-    const { login } = useAuth(); // login du contexte pour mettre à jour l'état global
+    const { login, isAuthenticated } = useAuth(); // On récupère isAuthenticated
     const navigate = useNavigate();
+
+    // Rediriger si on est déjà connecté (en utilisant useEffect pour éviter l'erreur render)
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/dashboard", { replace: true });
+        }
+    }, [isAuthenticated, navigate]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
